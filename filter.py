@@ -26,6 +26,11 @@ def get_middle(i, j):
 
 
 def get_color(i, j):
+    """
+    Функция находит присваивает значение цвета вокруг заданного пикселя, в зависимости от размеров мозайки и градации серого
+    :param i: номер строчки пикселя
+    :param j: номер колонки пикселя
+    """
     s = get_middle(i, j)
     step = 255 / gradation
     for n, n1 in product(range(i, i + sizeX), range(j, j + sizeY)):
@@ -36,6 +41,9 @@ def get_color(i, j):
 
 
 def get_mosaic():
+    """
+    Функция применяет get_color для пикселей, в зависимости от размеров мозайки
+    """
     [[get_color(i, j) for j in range(0, y, sizeY)] for i in range(0, x, sizeX)]
     res = Image.fromarray(matrix)
     res.save(newImg)
